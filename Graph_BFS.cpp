@@ -131,6 +131,7 @@ int main() {
     cout << "8. Heroes Museum (Museum Pahlawan), Central Surabaya\n";
     cout << "9. The Statue of Suro and Boyo (Patung Suro dan Boyo), South Surabaya\n";
     cout << "10. Surabaya Zoo (Kebun Binatang Surabaya), South Surabaya\n\n";
+    cout << "Type the name of the place in english\n";
     cout << "> ";
 
     getline(cin, Destinasi);

@@ -44,14 +44,23 @@ void DFS(const Graph &Tour, const string &Start) {
 
             // Iterasi melalui semua tetangga dari node saat ini
             for (const string &Next : Tour.Adj.at(Current)) {
-                // Jika tetangga belum dikunjungi, masukkan ke dalam stack
-                if (!Visited[Next]) {
-                    ToVisit.push(Next);
+                if (Tour.Adj.find(Current) != Tour.Adj.end()) {
+                    // Jika simpul ditemukan, lanjutkan
+                    if (!Visited[Next]) {
+                        ToVisit.push(Next);
+                    }
                 }
             }
         }
     }
 }
+
+void AddNode(Graph &Tour, const string &Node) {
+    if (Tour.Adj.find(Node) == Tour.Adj.end()) {
+        Tour.Adj[Node] = {};
+    }
+}
+
 
 //Negeri
 //UNESA 
@@ -161,6 +170,13 @@ int main() {
     break;
     
     case 3:{
+        AddNode(StudyTour, "UBAYA");
+        AddNode(StudyTour, "UINSA");
+        AddNode(StudyTour, "UNESA");
+        AddNode(StudyTour, "UC");
+        AddNode(StudyTour, "UNAIR");
+        AddNode(StudyTour, "ITS");
+
         Destination = "UBAYA";
         AddLine(StudyTour,"UBAYA", "UINSA");
         AddLine(StudyTour,"UINSA", "UNESA");
@@ -172,6 +188,8 @@ int main() {
         DFS(StudyTour,Destination);
         cout << "Finish";
     }
+    break;
+    
     default:
         cout << "Input tidak valid";
     break;
